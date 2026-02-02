@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hey Ashmi 💙</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      background: rgba(255,255,255,0.95);
+      border-radius: 16px;
+      padding: 24px;
+      max-width: 420px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .bg-photo {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0.25;
+      z-index: -1;
+    }
+
+    h1, h2, p { margin: 12px 0; }
+
+    .photos {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin: 16px 0;
+    }
+
+    .photos img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    button {
+      margin-top: 14px;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 999px;
+      background: #ff5f8f;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .secondary { background: #ccc; color: #333; }
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container" id="app"></div>
+
+<script>
+  const app = document.getElementById('app');
+
+  const images = [
+    'WhatsApp Image 2026-02-02 at 10.19.52 PM.jpeg',
+    'WhatsApp Image 2026-02-02 at 10.19.52 PM (1).jpeg',
+    'WhatsApp Image 2026-02-02 at 10.19.51 PM.jpeg',
+    'WhatsApp Image 2026-02-02 at 10.19.51 PM (1).jpeg',
+    'WhatsApp Image 2026-02-02 at 10.19.51 PM (2).jpeg',
+    'WhatsApp Image 2026-02-02 at 10.19.51 PM (3).jpeg'
+  ];
+
+  function step1() {
+    app.innerHTML = `
+      <h1>Hey Ashmi 💙</h1>
+      <img src="${images[0]}" style="width:100%; border-radius:14px; margin-top:12px;" />
+      <p>Jigri chal swipe kar</p>
+      <button onclick="step2()">Next</button>
+    `;
+  }
+
+  function step2() {
+    app.innerHTML = `
+      <h2>Jigri Mumbai nahi aa raha to ye le compensation</h2>
+      <div class="photos">
+        <img src="${images[1]}" />
+        <img src="${images[2]}" />
+      </div>
+      <button onclick="step3()">Next</button>
+    `;
+  }
+
+  function step3() {
+    app.innerHTML = `
+      <div class="bg-photo" style="background-image:url('${images[0]}')"></div>
+      <h2>Choose wisely jigri 😌</h2>
+      <div class="photos">
+        <img src="${images[3]}" />
+        <img src="${images[4]}" />
+      </div>
+      <div class="row">
+        <button id="increaseBtn" class="secondary" onclick="finalStep()">Increase jigriness</button>
+        <button onclick="endJigriness()">End jigriness</button>
+      </div>
+    `;
+  }
+
+  function endJigriness() {
+    const btn = document.getElementById('increaseBtn');
+    let size = 16;
+    const grow = setInterval(() => {
+      size += 4;
+      btn.style.fontSize = size + 'px';
+      btn.textContent = 'INCREASE JIGRINESS 😈';
+      if (size >= 48) clearInterval(grow);
+    }, 200);
+  }
+
+  function finalStep() {
+    app.innerHTML = `
+      <h2>Good jigri 😏</h2>
+      <p>You don't have an option 💀</p>
+      <div class="photos">
+        <img src="${images[5]}" />
+        <img src="${images[0]}" />
+      </div>
+    `;
+  }
+
+  step1();
+</script>
+
+</body>
+</html>
